@@ -269,6 +269,12 @@ EDUCATIONAL_MATERIAL_RESPONSE: {
 ```
 * **Response Body:** `{code: 200, payload: [USER_RESPONSE]}`
 
+### get_user_status
+* **Path:** `/get_user_status?uid=<user_id>`
+* **Http Method:** `GET`
+* **Request Body:** ``
+* **Response Body:** `{code: 200, payload: USER_RESPONSE}` //everything other than status and email verification flag will be null
+
 ### List New Shahadahs
 * **Path:** `/api/list_new_shahadahs?r=detailed`
 * **Http Method:** `POST`
@@ -307,7 +313,40 @@ For Volunteer:
 For New Muslims:
 ```
 {code: 200, payload: {
-  new_educational_material: [EDUCATIONAL_MATERIAL_RESPONSE] //right now this is being returned as empty
+  new_educational_material: [EDUCATIONAL_MATERIAL_RESPONSE]
+}}
+}
+```
+
+### Notification batch counts API
+* **Path:** `/api/notification_counts`
+* **Http Method:** `GET`
+* **Response Body:**
+For Admin:
+```
+{code: 200, payload: {
+  unattended_muslims: <int>,
+  new_shahadahs: <int>,
+  pending_membership_requests: <int>,
+  unassigned_tickets: <int>
+}}
+}
+```
+
+For Volunteer:
+```
+{code: 200, payload: {
+  unattended_muslims: <int>,
+  newly_assigned_muslims: <int>,
+  unacknowledged_tasks: <int>
+}}
+}
+```
+
+For New Muslims:
+```
+{code: 200, payload: {
+  new_educational_material: <int>
 }}
 }
 ```
