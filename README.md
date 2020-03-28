@@ -269,12 +269,6 @@ EDUCATIONAL_MATERIAL_RESPONSE: {
 ```
 * **Response Body:** `{code: 200, payload: [USER_RESPONSE]}`
 
-### get_user_status
-* **Path:** `/get_user_status?uid=<user_id>`
-* **Http Method:** `GET`
-* **Request Body:** ``
-* **Response Body:** `{code: 200, payload: USER_RESPONSE}` //everything other than status and email verification flag will be null
-
 ### List New Shahadahs
 * **Path:** `/api/list_new_shahadahs?r=detailed`
 * **Http Method:** `POST`
