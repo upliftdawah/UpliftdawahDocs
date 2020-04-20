@@ -269,6 +269,12 @@ EDUCATIONAL_MATERIAL_RESPONSE: {
 ```
 * **Response Body:** `{code: 200, payload: [USER_RESPONSE]}`
 
+### get_user_status
+* **Path:** `/get_user_status?uid=<user_id>`
+* **Http Method:** `GET`
+* **Request Body:** ``
+* **Response Body:** `{code: 200, payload: USER_RESPONSE}` //everything other than status and email verification flag will be null
+
 ### List New Shahadahs
 * **Path:** `/api/list_new_shahadahs?r=detailed`
 * **Http Method:** `POST`
@@ -287,9 +293,13 @@ For Admin:
 ```
 {code: 200, payload: {
   unattended_muslims: [USER_RESPONSE],
+  total_unattended_muslims: <int>,
   new_shahadahs: [USER_RESPONSE],
+  total_new_shahadahs: <int>,
   pending_membership_requests: [USER_RESPONSE],
-  unassigned_tickets: [TICKET_RESPONSE]
+  total_pending_membership_requests: <int>,
+  unassigned_tickets: [TICKET_RESPONSE],
+  total_unassigned_tickets: <int>,
 }}
 }
 ```
@@ -298,8 +308,11 @@ For Volunteer:
 ```
 {code: 200, payload: {
   unattended_muslims: [USER_RESPONSE],
+  total_unattended_muslims: <int>,
   newly_assigned_muslims: [USER_RESPONSE], //right now this is being returned as empty
-  unacknowledged_tasks: [TASK_RESPONSE]
+  total_newly_assigned_muslims: <int>,
+  unacknowledged_tasks: [TASK_RESPONSE],
+  total_unacknowledged_tasks: <int>
 }}
 }
 ```
@@ -307,7 +320,8 @@ For Volunteer:
 For New Muslims:
 ```
 {code: 200, payload: {
-  new_educational_material: [EDUCATIONAL_MATERIAL_RESPONSE]
+  new_educational_material: [EDUCATIONAL_MATERIAL_RESPONSE],
+  total_new_educational_material: <int>
 }}
 }
 ```
